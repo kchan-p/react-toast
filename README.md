@@ -1,4 +1,4 @@
-# vite-react-hydrated-ssr
+# react-toast
 
 Reactでの一時的な通知メッセージ（Toast）<br>
 https://note.affi-sapo-sv.com/react-toast.php<br>
