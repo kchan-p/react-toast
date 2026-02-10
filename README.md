@@ -24,7 +24,6 @@ npm run build<br>
 
 ## 実行
 
-node server.js
 
 ## 作者
 
