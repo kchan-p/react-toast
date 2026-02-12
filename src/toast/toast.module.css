@@ -1,0 +1,23 @@
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5px 16px;
+    background: #333;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, -50%) translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+}
+
+.toast_fadein {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+}
+
+.toast_fadeout {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(10px);
+}

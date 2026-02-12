@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-import  ToastContext from "./toastcontext";
+import ToastContext from "./toastcontext";
+import styles from "./toast.module.css";
 
-function ToastProvider({ children }){
+function ToastProvider({ children }) {
 
-    const {showToast,message,isFadeIn} = useToastContext();
+    const { showToast, message, isFadeIn } = useToastContext();
 
     return (
         <ToastContext value={{ showToast }}>
@@ -14,7 +15,7 @@ function ToastProvider({ children }){
 };
 export default ToastProvider;
 
-const useToastContext = ()=>{
+const useToastContext = () => {
     const [message, setMessage] = useState(null);
     const [isFadeIn, setIsFadeIn] = useState(false);
 
@@ -35,7 +36,7 @@ const useToastContext = ()=>{
 
         const waitTime = duration - FADE_OUT;
         // メッセージステータスセット→再レンダリング
-        setMessage({msg});
+        setMessage({ msg });
         // フレームをずらす
         requestAnimationFrame(() => setIsFadeIn(true));
 
@@ -43,10 +44,10 @@ const useToastContext = ()=>{
             setIsFadeIn(false);
 
             setTimeout(() => {
-                setMessage(null); 
+                setMessage(null);
                 nextToast();
             }, FADE_OUT);
-        }, waitTime < 0 ? duration : waitTime );
+        }, waitTime < 0 ? duration : waitTime);
     };
     // コンポーネントが呼び出す関数
     const showToast = (msg, duration = 2000) => {
@@ -55,42 +56,18 @@ const useToastContext = ()=>{
             nextToast();
         }
     };
-    return {showToast,message,isFadeIn};
+    return { showToast, message, isFadeIn };
 }
 
 const Toast = ({ message, isFadeIn }) => {
     return (
         <div
-            style={{
-                ...styles.toast,
-                ...(isFadeIn ? styles.fadein : styles.fadeout),
-            }}
+            className={
+                `${styles.toast} ${isFadeIn ? styles.toast_fadein : styles.toast_fadeout}`
+                }
         >
             {message}
         </div>
     );
 };
 
-const styles = {
-    toast: {
-        position: "fixed",
-        top:"50%",
-        left:"50%",
-        padding: "5px 16px",
-        background: "#333",
-        color: "#fff",
-        borderRadius: "10px",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.4)",
-        transform:" translate(-50%, -50%) translateY(10px)",
-        transition: "opacity 0.3s ease, transform 0.3s ease",
-        opacity:"0"
-    },
-    fadein: {
-        opacity: 1,
-        transform: "translate(-50%, -50%) translateY(0)",
-    },
-    fadeout: {
-        opacity: 0,
-        transform: " translate(-50%, -50%) translateY(10px)",
-    },
-};
