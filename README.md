@@ -1,6 +1,6 @@
 # react-toast
 
-Reactでの一時的な通知メッセージ（Toast）<br>
+Reactでの一時的な通知メッセージ（Toast）Context版<br>
 https://note.affi-sapo-sv.com/react-toast.php<br>
 
 
