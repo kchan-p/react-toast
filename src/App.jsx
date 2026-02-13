@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1>Reactでの一時的な通知メッセージ（Toast）</h1>
+      <h1>Reactでの一時的な通知メッセージ（Toast）Context版</h1>
       <ToastProvider>
         <CounterProvider>
           <TestButton clickNum={1} />
