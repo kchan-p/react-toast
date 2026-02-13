@@ -9,7 +9,13 @@ function ToastProvider({ children }) {
     return (
         <ToastContext value={{ showToast }}>
             {children}
-            {message && <Toast message={message.msg} isFadeIn={isFadeIn} />}
+            {message && <div
+                className={
+                    `${styles.toast} ${isFadeIn ? styles.toast_fadein : styles.toast_fadeout}`
+                }
+            >
+                {message.msg}
+            </div>}
         </ToastContext>
     );
 };
@@ -59,15 +65,4 @@ const useToastContext = () => {
     return { showToast, message, isFadeIn };
 }
 
-const Toast = ({ message, isFadeIn }) => {
-    return (
-        <div
-            className={
-                `${styles.toast} ${isFadeIn ? styles.toast_fadein : styles.toast_fadeout}`
-                }
-        >
-            {message}
-        </div>
-    );
-};
 
